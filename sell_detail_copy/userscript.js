@@ -32,6 +32,9 @@ function get_value() {
     phone_num = $("tbody.contact-info").children("tr:eq(2)").children("td:last").children("span").html();
     date = $("span.trade-time").html();
     //因为没弄好正则表达式  就先这样弄了  真烂
+    if ($("table.simple-list").children("tbody").children("tr:last").children("th").html() == "买家留言：") {
+        $("table.simple-list").children("tbody").children("tr:last").remove();
+    }
     $('table.simple-list.logistics-info').children('tbody').children('tr:last').children('td').children('a').remove();
     transport_num = $('table.simple-list.logistics-info').children('tbody').children('tr:last').children('td').html();
 }
