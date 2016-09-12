@@ -25,6 +25,9 @@ function check_and_change() {
             } else {
                 listdate[i].style.border = "3px solid green"; //记忆枕
             }
+            if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
+                listdate[i].style.borderStyle = "dashed";
+            }
         }
     }
 }
@@ -44,3 +47,8 @@ $(".pagination-options-go").click(function() {
 
 //$(".item-mod__trade-order___2LnGB").style.border="3px solid red";
 //.pagination-options-go
+
+
+
+//background: url(//img.alicdn.com/tps/i1/TB1heyGFVXXXXXpXXXXR3Ey7pXX-550-260.png) no-repeat -100px -207px;
+//background: url(//img.alicdn.com/tps/i1/TB1heyGFVXXXXXpXXXXR3Ey7pXX-550-260.png) no-repeat -176px -176px;
