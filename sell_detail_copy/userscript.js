@@ -56,7 +56,7 @@ function get_value2() {
     filename = $("table:last").children("tbody").children("tr:eq(1)").children("td:first").children("div:eq(1)").children("div").children("div:first").children("a").html();
     if (filename == "颈椎枕头治疗枕颈椎病专用枕 护颈枕蝶形磁疗修复劲椎保健护颈枕") {
         filename = "治疗枕";
-    } else if (filename == "牵草堂颈椎枕头修复颈椎保健枕头健康护颈枕成人劲椎反弓记忆棉枕") {
+    } else if (filename == "牵草堂颈椎枕头修复颈椎保健健康护颈枕成人劲椎专用反弓记忆棉枕") {
         filename = "颈椎枕";
     } else if (filename == "记忆枕头颈椎保健枕 修复颈椎 护颈枕成人曲度变直矫正劲椎专用枕") {
         filename = "驱蚊枕";
