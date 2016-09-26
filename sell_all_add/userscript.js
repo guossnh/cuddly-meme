@@ -31,6 +31,8 @@ function get_list_title() { //获取总共的标题数并且去除重复  放在
     time_shua = 0;
     time_gui = 0;
     time_use = 0;
+    list_date = [];
+    money_list = [];
     for (var i = 0; i < listdate.length; i++) {
         //排除带有红旗标志的元素
         if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
