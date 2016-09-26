@@ -9,12 +9,16 @@
 // ==/UserScript==
 
 //这是页面列表元素
-var listdate = document.getElementsByClassName("item-mod__trade-order___2LnGB");
-var title = document.getElementsByClassName("ml-mod__container___1zaKJ production-mod__production___3ZePJ suborder-mod__production___1eyM1");
-var list_date = [];
-var titlevar = "";
-var is_sell = ["买家已付款", "卖家已发货", "交易成功"];
-var is_sellvar = "";
+var listdate = "";
+list_date = [];
+money_list = [];
+titlevar = "";
+is_sell = ["买家已付款", "卖家已发货", "交易成功"];
+is_sellvar = "";
+money = 0;
+time_shua = 0;
+time_gui = 0;
+time_use = 0;
 
 function creat_button() {
     //往页面添加个按钮用于开始计算
@@ -23,35 +27,54 @@ function creat_button() {
 }
 
 function get_list_title() { //获取总共的标题数并且去除重复  放在ist_date 里边
+    listdate = document.getElementsByClassName("item-mod__trade-order___2LnGB");
+    time_shua = 0;
+    time_gui = 0;
+    time_use = 0;
     for (var i = 0; i < listdate.length; i++) {
         //排除带有红旗标志的元素
         if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
-            break;
+            time_shua++;
+            continue;
         }
         //选取状态值
-        is_sellvar = $(listdate[i]).children("table:last").children("tbody").children("tr").children("td:eq(5)").children("div").children("p:first").children("span").html()
-        //只选择买家已付款 卖家已发货 交易成功 的订单
+        is_sellvar = $(listdate[i]).children("table:last").children("tbody").children("tr").children("td:eq(5)").children("div").children("p:first").children("span").html();
+        //只选择买家已付款 卖家已发货 交易成功 的订单   
         if (is_sell.indexOf(is_sellvar) == -1) {
-            break;
+            time_gui++;
+            continue;
         }
+        //下边的提取  金额 和  标题   标题 要 过滤   金额 要 想加
+        titlevar = $(listdate[i]).children("table:last").children("tbody").children("tr").children("td:first").children("div").children("div:last").children("p:first").children("a").children("span:eq(1)").html();
 
-        titlevar = $(title[i]).children("div:last").children("p:first").children("a:first").children("span:eq(1)").html();
+        money = parseFloat($(listdate[i]).children("table:last").children("tbody").children("tr").children("td:eq(6)").children("div").children("div:first").children("p").children("strong").children("span:last").html());
+        time_use++;
         if (list_date.indexOf(titlevar) == -1) {
             list_date.push(titlevar);
+            money_list.push(money);
+        } else {
+            money_list[list_date.indexOf(titlevar)] = money_list[list_date.indexOf(titlevar)] + money;
         }
     }
 }
+//创建 文本信息   填写 需要的值
+function creat_text() {
+    content_value = "";
+    for (var i = 0; i < list_date.length; i++) {
+        content_value = content_value + "<tr><td>" + list_date[i] + "</td><td>" + money_list[i].toFixed(2) + "</td></tr>";
+    }
+    content_value = "<table><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</table>";
 
-
-
-
-
-
-
+    $(listdate[0]).before(content_value);
+}
 
 creat_button();
 
 $("#sell_ifo_copy").click(function() {
     get_list_title();
-    alert(list_date.length);
+    creat_text();
+    //alert(list_date.length);
+    //alert(list_date[0]);
+    //alert(money_list.length);
+    //alert(money_list[0]);
 });
