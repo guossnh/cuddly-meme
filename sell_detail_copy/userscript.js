@@ -6,7 +6,7 @@
 // @grant        none
 // @include    https://trade.taobao.com/trade/detail/trade_order_detail.htm*
 //@include    https://buyertrade.taobao.com/trade/detail/trade_order_detail.htm*
-// @require  http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js
+// @require  http://cdn.bootcss.com/jquery/2.1.0/jquery.js
 // ==/UserScript==
 //这是复制需要的信息成json格式 然后 粘贴进剪贴板的脚本
 
@@ -42,11 +42,11 @@ function get_value1() {
 
 function get_value2() {
     wwid = $("table").children("tbody").children("tr").children("td").children("span").html();
-    sell_num = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:first").children("span:last").children("span").html();
-    money = $("div.pay-info-mod__left___koLyN").children("strong").html();
+    sell_num = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:first").children("span:last").children("span").html();
+    money = $("div.pay-info-mod__left___3RqaM").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
-    date = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
-    pay_date = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
+    date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
+    pay_date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
     //add = $("div.logistics-panel-mod__group-info___2Y6Dh").children("div:first").children("div:first").children("span:last").chileren("a").remove();
     add = $(".value:first").html();
     //因为没弄好正则表达式  就先这样弄了  真烂
