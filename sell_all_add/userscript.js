@@ -19,6 +19,7 @@ money = 0;
 time_shua = 0;
 time_gui = 0;
 time_use = 0;
+add_place = $('.tabs-mod__container___FSB_J.nav-mod__tabs___5DHRQ')[0]; //添加列表的地方
 
 function creat_button() {
     //往页面添加个按钮用于开始计算
@@ -65,14 +66,15 @@ function creat_text() {
     for (var i = 0; i < list_date.length; i++) {
         content_value = content_value + "<tr><td>" + list_date[i] + "</td><td>" + money_list[i].toFixed(2) + "</td></tr>";
     }
-    content_value = "<table><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</table>";
+    content_value = "<table id='add_table'><tbody><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</tbody></table>";
 
-    $(listdate[0]).before(content_value);
+    $(add_place).before(content_value);
 }
 
 creat_button();
 
 $("#sell_ifo_copy").click(function() {
+    $("#add_table").remove();
     get_list_title();
     creat_text();
     //alert(list_date.length);
