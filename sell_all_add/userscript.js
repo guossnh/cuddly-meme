@@ -29,11 +29,14 @@ function creat_button() {
 
 function get_list_title() { //获取总共的标题数并且去除重复  放在ist_date 里边
     listdate = document.getElementsByClassName("item-mod__trade-order___2LnGB");
+    /*
+    如果这一块注释掉的话 那就是计算所有页面 的和  没有注释的话  每一页 都会有新的 统计
     time_shua = 0;
     time_gui = 0;
     time_use = 0;
     list_date = [];
     money_list = [];
+    */ 
     for (var i = 0; i < listdate.length; i++) {
         //排除带有红旗标志的元素
         if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
