@@ -60,7 +60,7 @@ function get_list_title() { //获取总共的标题数并且去除重复  放在
         }
     }
 }
-//创建 文本信息   填写 需要的值
+//创建 文本信息   填写 需要的值 
 function creat_text() {
     content_value = "";
     for (var i = 0; i < list_date.length; i++) {
