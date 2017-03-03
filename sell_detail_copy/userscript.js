@@ -31,8 +31,7 @@ function get_value1() {
     money = $("div.get-money").children("strong").html();
     add = $(".block-item").html();
     phone_num = $("tbody.contact-info").children("tr:eq(2)").children("td:last").children("span").html();
-    date = $("span.trade-time").html();
-    sell_mark = $(".alertmsg-mod__block___oVyme").children("span:last").children("span").html();
+    date = $("span.trade-time").html();  
     //因为没弄好正则表达式  就先这样弄了  真烂
     if ($("table.simple-list").children("tbody").children("tr:last").children("th").html() == "买家留言：") {
         $("table.simple-list").children("tbody").children("tr:last").remove();
@@ -48,6 +47,10 @@ function get_value2() {
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
     date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
     pay_date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
+    sell_mark = $(".alertmsg-mod__block___oVyme").children("span:last").children("span").html();
+    if(sell_mark ==undefined){
+        sell_mark = "";
+    }
     //add = $("div.logistics-panel-mod__group-info___2Y6Dh").children("div:first").children("div:first").children("span:last").chileren("a").remove();
     add = $(".value:first").html();
     //因为没弄好正则表达式  就先这样弄了  真烂
