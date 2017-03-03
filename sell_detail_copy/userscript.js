@@ -11,7 +11,7 @@
 //这是复制需要的信息成json格式 然后 粘贴进剪贴板的脚本
 
 //声明变量
-var wwid, sell_num, money, add, phone_num, transport_num, date, username, filename, pay_date; //旺旺ID , 单号 , 钱 , 地址 , 电话 , 运单号码,下单日期 ,姓名,付款日期
+var wwid, sell_num, money, add, phone_num, transport_num, date, username, filename, pay_date, sell_mark; //旺旺ID , 单号 , 钱 , 地址 , 电话 , 运单号码,下单日期 ,姓名,付款日期,卖家备注
 var phone_num_exec = "^1[3|4|5|7|8][0-9]\d{8}$";
 var transport_num_exec = "\d{8,20}";
 
@@ -32,6 +32,7 @@ function get_value1() {
     add = $(".block-item").html();
     phone_num = $("tbody.contact-info").children("tr:eq(2)").children("td:last").children("span").html();
     date = $("span.trade-time").html();
+    sell_mark = $(".alertmsg-mod__block___oVyme").children("span:last").children("span").html();
     //因为没弄好正则表达式  就先这样弄了  真烂
     if ($("table.simple-list").children("tbody").children("tr:last").children("th").html() == "买家留言：") {
         $("table.simple-list").children("tbody").children("tr:last").remove();
