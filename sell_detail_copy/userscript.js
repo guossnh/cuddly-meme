@@ -15,7 +15,7 @@ var wwid, sell_num, money, add, phone_num, transport_num, date, username, filena
 var phone_num_exec = "^1[3|4|5|7|8][0-9]\d{8}$";
 var transport_num_exec = "\d{8,20}";
 
-
+ 
 function creat_button() {
     //往页面添加两个按钮用于复制两种信息
     $("body").append("<a id='sell_ifo_copy' class='sell_ifo_copy' >卖</a>");
