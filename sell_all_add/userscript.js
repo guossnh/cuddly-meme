@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sell_all_add
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       tlk
 // @include    https://trade.taobao.com/trade/itemlist/*
@@ -70,7 +70,6 @@ function creat_text() {
         content_value = content_value + "<tr><td>" + list_date[i] + "</td><td>" + money_list[i].toFixed(2) + "</td></tr>";
     }
     content_value = "<table id='add_table'><tbody><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</tbody></table>";
-
     $(add_place).before(content_value);
 }
 
