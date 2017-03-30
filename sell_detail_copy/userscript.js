@@ -78,7 +78,7 @@ creat_button();
 $("#sell_ifo_copy").click(function() {
     get_value2();
     //copyToClipboard("[" + date + ",'',1," + wwid + "]");
-    $("body").append("<textarea style='font-family:Microsoft YaHei;font-size: 11px;text-align: center;' id = 'copy_text_id'><table><tr><td>" + date + "</td><td>" + filename + "</td><td>" + username + "</td><td>1</td><td>" + wwid + "</td><td>" + phone_num + "</td><td>" + add + "</td><td>" + sell_num + "</td><td>" + transport_num + "</td><td>" + money + "</td><td>T</td></tr></table></textarea>");
+    $("body").append("<textarea style='font-family:Microsoft YaHei;font-size: 11px;text-align: center;' id = 'copy_text_id'><table><tr><td>" + date + "</td><td>" + filename + "</td><td>" + username + "</td><td>1</td><td>" + wwid + "</td><td>" + phone_num + "</td><td>" + add + "</td><td>" + '\''+sell_num + "</td><td>" + '\''+transport_num + "</td><td>" + money + "</td><td>T</td></tr></table></textarea>");
     var copy_text_id = document.getElementById("copy_text_id");
     copy_text_id.focus();
     copy_text_id.select();

@@ -42,7 +42,7 @@ function get_value1() {
 }
 
 function get_value2() {
-    wwid = $("table").children("tbody").children("tr").children("td").children("span").html();
+    wwid = $("table").children("tb ody").children("tr").children("td").children("span").html();
     sell_num = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:first").children("span:last").children("span").html();
     money = $("div.pay-info-mod__left___koLyN").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
