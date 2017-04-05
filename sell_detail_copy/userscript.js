@@ -41,13 +41,13 @@ function get_value1() {
 }
 
 function get_value2() {
-    wwid = $("table").children("tbody").children("tr").children("td").children("span").html();
-    sell_num = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:first").children("span:last").children("span").html();
-    money = $("div.pay-info-mod__left___3RqaM").children("strong").html();
+    wwid = $("label:contains('昵称：')").next().html();
+    sell_num = $(".misc-info-mod__content___fZXJX").children("span").html();
+    money = $(".pay-info-mod__left___1BPkW").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
-    date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
-    pay_date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
-    sell_mark = $(".alertmsg-mod__block___oVyme").children("span:last").children("span").html();
+    date = $(".misc-info-mod__content___fZXJX:eq(2)").children("span").html();
+    pay_date = $(".misc-info-mod__content___fZXJX:eq(4)").children("span").html();
+    sell_mark = $("div.alertmsg-mod__msg___1R_hZ.alertmsg-mod__block___avpTi").children("span:eq(1)").children("span").html();
     if(sell_mark ==undefined){
         sell_mark = "";
     }
