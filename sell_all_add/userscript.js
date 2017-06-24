@@ -19,7 +19,7 @@ money = 0;
 time_shua = 0;
 time_gui = 0;
 time_use = 0;
-add_place = $('.tabs-mod__container___3JzCS.nav-mod__tabs___5DHRQ')[0];//添加列表的地方
+add_place = $('.tabs-mod__container___29mpB.nav-mod__tabs___5DHRQ')[0];//添加列表的地方
 
 function creat_button() {
     //往页面添加个按钮用于开始计算
