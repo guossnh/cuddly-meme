@@ -42,12 +42,12 @@ function get_value1() {
 }
 
 function get_value2() {
-    wwid = $("table").children("tbody").children("tr").children("td").children("span").html();
-    sell_num = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:first").children("span:last").children("span").html();
-    money = $("div.pay-info-mod__left___koLyN").children("strong").html();
+    wwid = $("label:contains('昵称：')").next().html();
+    sell_num = $(".misc-info-mod__content___fZXJX").children("span").html();
+    money = $(".pay-info-mod__left___1BPkW").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
-    date = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
-    pay_date = $("div.misc-info-mod__misc-info___1iQ6Y").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
+    date = $(".misc-info-mod__content___fZXJX:eq(2)").children("span").html();
+    pay_date = $(".misc-info-mod__content___fZXJX:eq(4)").children("span").html();
     //add = $("div.logistics-panel-mod__group-info___2Y6Dh").children("div:first").children("div:first").children("span:last").chileren("a").remove();
     add = $(".value:first").html();
     //因为没弄好正则表达式  就先这样弄了  真烂

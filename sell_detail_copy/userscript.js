@@ -11,11 +11,11 @@
 //这是复制需要的信息成json格式 然后 粘贴进剪贴板的脚本
 
 //声明变量
-var wwid, sell_num, money, add, phone_num, transport_num, date, username, filename, pay_date; //旺旺ID , 单号 , 钱 , 地址 , 电话 , 运单号码,下单日期 ,姓名,付款日期
+var wwid, sell_num, money, add, phone_num, transport_num, date, username, filename, pay_date, sell_mark; //旺旺ID , 单号 , 钱 , 地址 , 电话 , 运单号码,下单日期 ,姓名,付款日期,卖家备注
 var phone_num_exec = "^1[3|4|5|7|8][0-9]\d{8}$";
 var transport_num_exec = "\d{8,20}";
 
-
+ 
 function creat_button() {
     //往页面添加两个按钮用于复制两种信息
     $("body").append("<a id='sell_ifo_copy' class='sell_ifo_copy' >卖</a>");
@@ -31,7 +31,7 @@ function get_value1() {
     money = $("div.get-money").children("strong").html();
     add = $(".block-item").html();
     phone_num = $("tbody.contact-info").children("tr:eq(2)").children("td:last").children("span").html();
-    date = $("span.trade-time").html();
+    date = $("span.trade-time").html();  
     //因为没弄好正则表达式  就先这样弄了  真烂
     if ($("table.simple-list").children("tbody").children("tr:last").children("th").html() == "买家留言：") {
         $("table.simple-list").children("tbody").children("tr:last").remove();
@@ -41,12 +41,16 @@ function get_value1() {
 }
 
 function get_value2() {
-    wwid = $("table").children("tbody").children("tr").children("td").children("span").html();
-    sell_num = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:first").children("span:last").children("span").html();
-    money = $("div.pay-info-mod__left___3RqaM").children("strong").html();
+    wwid = $("label:contains('昵称：')").next().html();
+    sell_num = $(".misc-info-mod__content___fZXJX").children("span").html();
+    money = $(".pay-info-mod__left___1BPkW").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
-    date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(2)").children("span:last").children("span").html();
-    pay_date = $("div.misc-info-mod__misc-info___2Z-Sl").children("div:last").children("span:eq(4)").children("span:last").children("span").html();
+    date = $(".misc-info-mod__content___fZXJX:eq(2)").children("span").html();
+    pay_date = $(".misc-info-mod__content___fZXJX:eq(4)").children("span").html();
+    sell_mark = $("div.alertmsg-mod__msg___1R_hZ.alertmsg-mod__block___avpTi").children("span:eq(1)").children("span").html();
+    if(sell_mark ==undefined){
+        sell_mark = "";
+    }
     //add = $("div.logistics-panel-mod__group-info___2Y6Dh").children("div:first").children("div:first").children("span:last").chileren("a").remove();
     add = $(".value:first").html();
     //因为没弄好正则表达式  就先这样弄了  真烂
@@ -74,7 +78,7 @@ creat_button();
 $("#sell_ifo_copy").click(function() {
     get_value2();
     //copyToClipboard("[" + date + ",'',1," + wwid + "]");
-    $("body").append("<textarea style='font-family:Microsoft YaHei;font-size: 11px;text-align: center;' id = 'copy_text_id'><table><tr><td>" + date + "</td><td>" + filename + "</td><td>" + username + "</td><td>1</td><td>" + wwid + "</td><td>" + phone_num + "</td><td>" + add + "</td><td>" + sell_num + "</td><td>" + transport_num + "</td><td>" + money + "</td><td>T</td></tr></table></textarea>");
+    $("body").append("<textarea style='font-family:Microsoft YaHei;font-size: 11px;text-align: center;' id = 'copy_text_id'><table><tr><td>" + date + "</td><td>" + filename + "</td><td>" + username + "</td><td>1</td><td>" + wwid + "</td><td>" + phone_num + "</td><td>" + add + "</td><td>" + '\''+sell_num + "</td><td>" + '\''+transport_num + "</td><td>" + money + "</td><td>T</td></tr></table></textarea>");
     var copy_text_id = document.getElementById("copy_text_id");
     copy_text_id.focus();
     copy_text_id.select();

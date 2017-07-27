@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         sell_all_add
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       tlk
 // @include    https://trade.taobao.com/trade/itemlist/*
 // @require  http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js
 // ==/UserScript==
-
+//e  biao jiyixia wocao
 //这是页面列表元素
 var listdate = "";
 list_date = [];
@@ -19,7 +19,7 @@ money = 0;
 time_shua = 0;
 time_gui = 0;
 time_use = 0;
-add_place = $('.tabs-mod__container___FSB_J.nav-mod__tabs___5DHRQ')[0]; //添加列表的地方
+add_place = $('#page');//添加列表的地方
 
 function creat_button() {
     //往页面添加个按钮用于开始计算
@@ -29,11 +29,14 @@ function creat_button() {
 
 function get_list_title() { //获取总共的标题数并且去除重复  放在ist_date 里边
     listdate = document.getElementsByClassName("item-mod__trade-order___2LnGB");
+    /*
+    如果这一块注释掉的话 那就是计算所有页面 的和  没有注释的话  每一页 都会有新的 统计
     time_shua = 0;
     time_gui = 0;
     time_use = 0;
     list_date = [];
     money_list = [];
+    */ 
     for (var i = 0; i < listdate.length; i++) {
         //排除带有红旗标志的元素
         if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
@@ -60,14 +63,13 @@ function get_list_title() { //获取总共的标题数并且去除重复  放在
         }
     }
 }
-//创建 文本信息   填写 需要的值
+//创建 文本信息   填写 需要的值 
 function creat_text() {
     content_value = "";
     for (var i = 0; i < list_date.length; i++) {
         content_value = content_value + "<tr><td>" + list_date[i] + "</td><td>" + money_list[i].toFixed(2) + "</td></tr>";
     }
     content_value = "<table id='add_table'><tbody><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</tbody></table>";
-
     $(add_place).before(content_value);
 }
 
