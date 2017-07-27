@@ -22,8 +22,8 @@ function creat_button() {
     //$("body").append("<a id='shua_ifo_copy' class='shua_ifo_copy' >刷</a>");
     //这是两个元素的css样式
     $("body").append("<style>.sell_ifo_copy {top:50px;left:10px;position:fixed;background-color:#44c767;-moz-border-radius:28px;-webkit-border-radius:28px;border-radius:28px;border:1px solid #18ab29;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:17px;padding:16px 31px;    text-decoration:none;text-shadow:0px 1px 0px #2f6627;}.sell_ifo_copy:hover {background-color:#5cbf2a;}</style>");
-    //$("body").append("<style>.shua_ifo_copy {top:150px;left:10px;position:fixed;background-color:#44c767;-moz-border-radius:28px;-webkit-border-radius:28px;border-radius:28px;border:1px solid #18ab29;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:17px;padding:16px 31px;    text-decoration:none;text-shadow:0px 1px 0px #2f6627;}.shua_ifo_copy:hover {background-color:#5cbf2a;}</style>");
 }
+
 //2016年9月12日弃用这个寻找值的办法   狗日的淘宝 改版了
 function get_value1() {
     wwid = $(".nickname").html();
