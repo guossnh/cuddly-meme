@@ -1,23 +1,25 @@
 // ==UserScript==
 // @name         findBadMan
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @namespace    http://guossnh.github.io/findBaidMan/userscript.js
+// @version      0.2
 // @description  try to take over the world!
 // @author       tlk
+// @updateURL  http://guossnh.com/findBaidMan/userscript.js
+// @downloadURL http://guossnh.com/findBaidMan/userscript.js
 // @include    https://trade.taobao.com/trade/itemlist/*
 // @require  http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js
 // ==/UserScript==
 
 //全局变量区域
 var urllist = new Array(0);
-var keyWorld = new Array("极限品牌2015","鹏哥到此一游","啥尼英伦会社","张恒","罗腾","18005651225","15375371225","15395511780","北干街道建设2路","红十燕七里桥","龙池办事处","麻城市","萧山区","贤武","唐倩","李杏桦");
+var keyWorld = new Array("极限品牌2015","鹏哥到此一游","啥尼英伦会社","张恒","罗腾","18005651225","15375371225","15395511780","北干街道建设2路","红十燕七里桥","龙池办事处","麻城市","萧山区","贤武");
 var doUrlList = new Array(0);
 //处理页面上边的详情连接并且放入urllist
     function doList (callback){
         setTimeout(function(){
             var data = $("a:contains('详情')");
             var datas;
-            console.log("dolist have dane");
+            //console.log("dolist have dane");
             for(var i = 0;i<data.length;i++){
                 datas = data.get()[i].href.toString();
                 if (datas.indexOf("detail")===31){
@@ -43,7 +45,7 @@ var doUrlList = new Array(0);
 //新建list存入值为Ture的订单号
     function getTheList(callback){
         setTimeout(function(){
-            console.log("getTheList");
+            //console.log("getTheList");
             for(var i = 0; i<urllist.length;i++){
                 findBadManKeyWorld(urllist[i]);
             }
