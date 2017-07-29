@@ -10,7 +10,7 @@
 
 //全局变量区域
 var urllist = new Array(0);
-var keyWorld = new Array("极限品牌2015","鹏哥到此一游","啥尼英伦会社","张恒","罗腾","18005651225","15375371225","15395511780","北干街道建设2路","红十燕七里桥","龙池办事处","麻城市","萧山区","贤武","唐倩");
+var keyWorld = new Array("极限品牌2015","鹏哥到此一游","啥尼英伦会社","张恒","罗腾","18005651225","15375371225","15395511780","北干街道建设2路","红十燕七里桥","龙池办事处","麻城市","萧山区","贤武","唐倩","李杏桦");
 var doUrlList = new Array(0);
 //处理页面上边的详情连接并且放入urllist
     function doList (callback){
@@ -33,7 +33,7 @@ var doUrlList = new Array(0);
             for (var i = 0; i<keyWorld.length;i++){
                 //console.log(result.indexOf(keyWorld[i]));
                 if(result.indexOf(keyWorld[i])>0){
-                    console.log("我草一次"+keyWorld[i]);
+                    console.log("关键词"+keyWorld[i]);
                     doUrlList.push(link);
                     break;
                 }
@@ -64,8 +64,8 @@ var doUrlList = new Array(0);
             }
         },500);
     }
-//页面载入之后执行
-(function() {
+//中心控制
+function head(){
     setTimeout(function(){
         doList(function(){
             getTheList(function(){
@@ -73,4 +73,10 @@ var doUrlList = new Array(0);
             });
         });
     },1000);
-})();
+}
+//页面载入之后执行
+(function() {head();})();
+//点击换页之后执行
+$(".pagination-item").click(function() {head();});
+//点击跳转之后 执行
+$(".pagination-options-go").click(function() {head();});
