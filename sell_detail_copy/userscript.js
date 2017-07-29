@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         copy to jiantieban
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       tlk
 // @grant        none
 // @include    https://trade.taobao.com/trade/detail/trade_order_detail.htm*
 //@include    https://buyertrade.taobao.com/trade/detail/trade_order_detail.htm*
 // @require  http://cdn.bootcss.com/jquery/2.1.0/jquery.js
+// @updateURL  http://guossnh.github.io/copytojiantieban/userscript.js
+// @downloadURL http://guossnh.github.io/copytojiantieban/userscript.js
 // ==/UserScript==
 //这是复制需要的信息成json格式 然后 粘贴进剪贴板的脚本
 
@@ -42,10 +44,10 @@ function get_value1() {
 
 function get_value2() {
     wwid = $("label:contains('昵称：')").next().html();
-    sell_num = $(".misc-info-mod__content___fZXJX").children("span").html();
-    money = $(".pay-info-mod__left___1BPkW").children("strong").html();
+    sell_num = $(".misc-info-mod__content___1i_60").children("span").html();
+    money = $(".pay-info-mod__left___2m3nN").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
-    date = $(".misc-info-mod__content___fZXJX:eq(2)").children("span").html();
+    date = $(".misc-info-mod__content___1i_60:eq(2)").children("span").html();
     pay_date = $(".misc-info-mod__content___fZXJX:eq(4)").children("span").html();
     sell_mark = $("div.alertmsg-mod__msg___1R_hZ.alertmsg-mod__block___avpTi").children("span:eq(1)").children("span").html();
     if(sell_mark ==undefined){
