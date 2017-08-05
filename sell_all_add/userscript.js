@@ -39,10 +39,10 @@ function get_list_title() { //获取总共的标题数并且去除重复  放在
     */ 
     for (var i = 0; i < listdate.length; i++) {
         //排除带有红旗标志的元素
-        if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
-            time_shua++;
-            continue;
-        }
+        //if (listdate[i].innerHTML.match("visibility:visible;") !== null) {
+        //    time_shua++;
+        //    continue;
+        //}
         //选取状态值
         is_sellvar = $(listdate[i]).children("table:last").children("tbody").children("tr").children("td:eq(5)").children("div").children("p:first").children("span").html();
         //只选择买家已付款 卖家已发货 交易成功 的订单   
@@ -50,8 +50,27 @@ function get_list_title() { //获取总共的标题数并且去除重复  放在
             time_gui++;
             continue;
         }
+        var flgColor = "";
+        //添加旗帜颜色选择在标题的后边加上颜色字符
+        if (listdate[i].innerHTML.match("-176px -176px;") !== null) {//这是灰色
+            flgColor = "<span style = 'color:#888'>灰<span>";
+        }else if(listdate[i].innerHTML.match("-120px -207px;") !== null){//这是绿色
+            flgColor = "<span style = 'color:#0f0'>绿<span>";time_shua++;
+        }else if(listdate[i].innerHTML.match("-80px -207px;") !== null){//这是紫色
+            flgColor = "<span style = 'color:#f0f'>紫<span>";time_shua++;
+        }else if(listdate[i].innerHTML.match("-100px -207px;") !== null){//这是红色
+            flgColor = "<span style = 'color:#f00'>红<span>";
+        }else if(listdate[i].innerHTML.match("-140px -207px;") !== null){//这是黄色
+            flgColor = "<span style = 'color:#ff0'>黄<span>";
+        }else if(listdate[i].innerHTML.match("-60px -207px;") !== null){//这是蓝色
+            flgColor = "<span style = 'color:#00f'>蓝<span>";
+        }else{
+            flgColor = "<span style = 'color:#red'>出问题了,叫人吧<span>";
+        }
         //下边的提取  金额 和  标题   标题 要 过滤   金额 要 想加
         titlevar = $(listdate[i]).children("table:last").children("tbody").children("tr").children("td:first").children("div").children("div:last").children("p:first").children("a").children("span:eq(1)").html();
+
+        titlevar = titlevar + flgColor;//后边加上旗子颜色做判断
 
         money = parseFloat($(listdate[i]).children("table:last").children("tbody").children("tr").children("td:eq(6)").children("div").children("div:first").children("p").children("strong").children("span:last").html());
         time_use++;
@@ -69,7 +88,7 @@ function creat_text() {
     for (var i = 0; i < list_date.length; i++) {
         content_value = content_value + "<tr><td>" + list_date[i] + "</td><td>" + money_list[i].toFixed(2) + "</td></tr>";
     }
-    content_value = "<table id='add_table'><tbody><tr><td>刷单数:</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</tbody></table>";
+    content_value = "<table id='add_table'><tbody><tr><td>刷单数:(绿色+紫色)</td><td>" + time_shua + "</td><td>不统计条目:</td><td>" + time_gui + "</td><td>统计条目:</td><td>" + time_use + "</td></tr>" + content_value + "</tbody></table>";
     $(add_place).before(content_value);
 }
 
@@ -84,3 +103,14 @@ $("#sell_ifo_copy").click(function() {
     //alert(money_list.length);
     //alert(money_list[0]);
 });
+
+
+
+/*
+-120px -207px;     绿色
+-176px -176px;     灰色
+-80px -207px;       紫色
+-100px -207px;     红色
+-140px -207px;     黄色
+-60px -207px;       蓝色
+*/
