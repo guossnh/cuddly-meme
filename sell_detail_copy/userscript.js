@@ -45,7 +45,7 @@ function get_value1() {
 function get_value2() {
     wwid = $("label:contains('昵称：')").next().html();
     sell_num = $(".misc-info-mod__content___1i_60").children("span").html();
-    money = $(".pay-info-mod__left___2m3nN").children("strong").html();
+    money = $(".pay-info-mod__value___KNc_6").children("strong").html();
     phone_num = $("table").children("tbody").children("tr:eq(1)").children("td:last").children("span").html();
     date = $(".misc-info-mod__content___1i_60:eq(2)").children("span").html();
     pay_date = $(".misc-info-mod__content___fZXJX:eq(4)").children("span").html();

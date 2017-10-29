@@ -10,6 +10,7 @@
 // @downloadURL http://guossnh.github.io/copytojiantieban2/userscript.js
 // ==/UserScript==
 // 这是第二个版本,准备在列表页面载入列表详情然后存入excle
+//2017年8月10日    update  想了一下大约 这个 需求是一个伪需求  因为操作更多了所以 之前的想法肯定会更复杂, 我先做一个简单的版本  就是 可以从列表页面直接复制销量信息的东西不要限制格式了   这个想办法解决这个问题
 //下边的公共变量部分
 var contentText = "";//这是最终复制到剪贴板的内容
 var urllist = new Array(0);
