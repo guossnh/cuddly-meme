@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <!--
+    <link rel="stylesheet" type="text/css" media="screen" href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" />
+    -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./weui.min.css" />
+    <script>
+        function dourl(){
+            var shopid = document.getElementById("getshopid").value;
+            if(shopid==""||shopid==null){
+                alert("你不写宝贝ID,瞎JB点啥啊");
+            }else{
+                var tlkurl = "http://tlk.yijunji.com/tlk/dotkl.html?shopid="+shopid+"";
+                document.getElementById("putshopid").innerHTML = tlkurl;
+                document.getElementById("putshopid").href = tlkurl;
+            }
+        }
+    </script>
+</head>
+<body>
+        <div class="page__bd">
+            <article class="weui-article">
+            <h1>请在下边输入你宝贝的ID然后点击确定.</h1>
+            </article>
+        </div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">宝贝ID</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id ="getshopid" type="number" pattern="[0-9]*" placeholder="请输入宝贝ID">
+                </div>
+            </div>
+        </div>
+        <div class="weui-btn-area">
+                <a class="weui-btn weui-btn_primary" onclick="dourl();" id="showTooltips">生成连接</a>
+        </div>
+        <div class="page__bd">
+                <article class="weui-article">
+                <h1>下边的连接是你产品的连接,保存一下一直可以用:</h1>
+                <a id="putshopid" href=""></a>
+                </article>
+        </div>       
+    <!--这是底部-->
+    <div class="weui-footer">
+        <p class="weui-footer__text">by 卓tlk</p>
+    </div>
+</body>
+</html>

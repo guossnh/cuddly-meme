@@ -1,0 +1,20 @@
+<?php
+    //引入文件
+    include "./tbsdk/TopSdk.php";
+    $appkey = "24813912";
+    $secret = "60afb8c12e2e930d454422cadb09ab3f";
+
+    $c = new TopClient;
+    $c->appkey = $appkey;
+    $c->secretKey = $secret;
+    $c->format = "json";
+    $req = new TbkTpwdCreateRequest;
+    $req->setText("郭文卓真帅");
+    $req->setUrl("http://h5.m.taobao.com/awp/core/detail.htm?locate=guessitem-item&spm=a2141.1.guessitem.guessitem-"+$_POST['linknum']+"&scm=1007.12286.76309.110&id="+$_POST['shopid']+"");
+    $req->setLogo("https://uland.taobao.com/");
+    $req->setExt("{}");
+    $resp = $c->execute($req);
+    echo $resp->data->model;
+    //SimpleXMLElement Object ( [data] => SimpleXMLElement Object ( [model] => ￥MznT0LTwEk6￥ ) [request_id] => 11ifxh5tsh5cx )
+    //stdClass Object ( [data] => stdClass Object ( [model] => ￥a3rz0LTDN8s￥ ) [request_id] => iv1pugh4xwe7 )
+?>
