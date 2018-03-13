@@ -20,7 +20,8 @@
 
 //初始化按钮
 (function() {
-    $.each($("[href$='tmall.com']"),function(i,n){n.style = "color:red;";});
+    $.each($("[href$='detail.tmall.com/item.htm']"),function(i,n){n.style = "color:red;";});
+    $.each($("[href$='item.taobao.com/item.htm']"),function(i,n){n.style = "color:blue;";});
     //添加按钮
     //$("body").append("<a id='change_font_color' class='change_font_color' >C</a>");
     //$("body").append("<style>.change_font_color {top:100px;left:10px;position:fixed;background-color:#44c767;-moz-border-radius:28px;-webkit-border-radius:28px;border-radius:28px;border:1px solid #18ab29;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:12px;padding:16px 31px;text-decoration:none;text-shadow:0px 1px 0px #2f6627;}.sell_ifo_copy:hover {background-color:#5cbf2a;}</style>")
