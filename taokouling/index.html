@@ -13,7 +13,7 @@
         function dourl(){
             var shopid = document.getElementById("getshopid").value;
             if(shopid==""||shopid==null){
-                alert("你不写宝贝ID,瞎JB点啥啊");
+                alert("亲要写一个宝贝ID才能生成");
             }else{
                 var tlkurl = "http://tlk.yijunji.com/tlk/dotkl.html?shopid="+shopid+"";
                 document.getElementById("putshopid").innerHTML = tlkurl;
