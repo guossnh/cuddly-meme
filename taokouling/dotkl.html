@@ -12,6 +12,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script>
     var babyid;
+    var babyidlist = ["563917259241","525551346139"];
     //这是通过ajax的方法向服务器获取淘口令的方法
     function gettkl(babynum){
         $.post("urltotkl.php?babyid="+babyid+"&babynum="+babynum+"",{babyid:""+babyid+"",babynum:""+babynum+""},function(result){
@@ -26,6 +27,10 @@
             babyid = window.location.href.split("=")[1];
             if (babyid ==""||babyid ==null){
                 window.location.href="http://tlk.yijunji.com/tlk/index.html";  
+            }
+            //这里需要验证宝贝ID是否付钱
+            if(babyidlist.indexOf(babyid)<0){
+                window.location.href="http://tlk.yijunji.com/tlk/index.html";
             }
             //这是控制页面生成50行列表的方法
             for (var i=1;i<51;i++)
