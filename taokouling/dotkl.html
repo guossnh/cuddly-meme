@@ -23,11 +23,11 @@
             //这里需要从地址栏获取值宝贝ID的方法
             babyid = window.location.href.split("=")[1];
             if (babyid ==""||babyid ==null){
-                window.location.href="./money.html";  
+                window.location.href="http://tlk.yijunji.com/tlk/index.html";
             }
             //这里需要验证宝贝ID是否付钱
             if(babyidlist.indexOf(babyid)<0){
-                window.location.href="http://tlk.yijunji.com/tlk/index.html";
+                window.location.href="./money.html";
             }
             //这是控制页面生成50行列表的方法
             for (var i=1;i<51;i++)
