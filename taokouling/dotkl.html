@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>列表页</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <!--
-    <link rel="stylesheet" type="text/css" media="screen" href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" />
-    -->
     <link rel="stylesheet" type="text/css" media="screen" href="./weui.min.css" />
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script>
     var babyid;
-    var babyidlist = ["563917259241","525551346139"];
+    var babyidlist = ["563917259241","525551346139","563618021428"];
     //这是通过ajax的方法向服务器获取淘口令的方法
     function gettkl(babynum){
         $.post("urltotkl.php?babyid="+babyid+"&babynum="+babynum+"",{babyid:""+babyid+"",babynum:""+babynum+""},function(result){
@@ -26,7 +23,7 @@
             //这里需要从地址栏获取值宝贝ID的方法
             babyid = window.location.href.split("=")[1];
             if (babyid ==""||babyid ==null){
-                window.location.href="http://tlk.yijunji.com/tlk/index.html";  
+                window.location.href="./money.html";  
             }
             //这里需要验证宝贝ID是否付钱
             if(babyidlist.indexOf(babyid)<0){
