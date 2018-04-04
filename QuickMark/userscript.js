@@ -22,7 +22,7 @@ $(function(){
     babyTitle = document.getElementsByClassName("name")[1].getElementsByTagName("a")[0].innerText;
     babyRemark = document.getElementById("memo").innerHTML;
     if(babyRemark.indexOf("GWZ")==-1){
-        if(babyTitle.indexOf("治疗感染脚气")>=0||babyTitle.indexOf("喷脚王止痒")>=0){
+        if(babyTitle.indexOf("治疗感染脚气")>=0||babyTitle.indexOf("喷脚王止痒")>=0||babyTitle.indexOf("脚臭脚汗")>=0){
             //判断是不是脚臭的产品
             document.getElementById("memo").innerHTML="GWZ-PJW*"+babyNum+"+JCF*"+babyNum*2+"";
         }
