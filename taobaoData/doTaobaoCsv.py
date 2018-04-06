@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 import os
 
-csvAddress = "c:\\csvCache\\"
-csvFileList = []
+csvAddress = "c:\\csvCache\\taobaoWeb\\"#web导出表格地址
+csvFileList = []#这是存放文件路径的list
+productName = []#产品名称列表
 
 class doTaobaoCsv(object):
 
