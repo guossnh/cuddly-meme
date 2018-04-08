@@ -2,9 +2,9 @@
 
 #这是产品对象的实体类,因为是根据交易信息的标题标识的,所以可能有出错的地方.暂时的解决方法
 
-class orderVO():
+class orderVO(object):
     babyName = ""#产品名称
-    sellId = ""#交易ID
+    sellId = []#交易ID
     babyRemark = ""#卖家备注
     babyWeixinMoney = 0#微信销售金额
     babyWeixinNum = 0#微信销售数量
@@ -20,13 +20,9 @@ class orderVO():
     unknowRemarkMoney =0#没有识别标记的总金额
     unknowRemarkNum =0#没有识别标记的总数量
 
-    #G-GWZ-MJ*1(100+5)[STKD]   这些是标记范例
-    #GWZ-PJW*1+JCF*2[BSKD]
-    #V-GWZ-PJW*1[YDKD]
-    def __init__(self,sellRemark,money,name,sellId):
+    def __init__(self,name,Remark,Id):
         self.babyName = name
-        self.sellId = sellId
-        if(sellRemark.find('null')!=-1):
-            pass
-    def addOneData(self):
-        pass
+        self.addOneData(Remark,Id)
+
+    def addOneData(self,sellRemark,sellId):
+        self.sellId.append(sellId)
