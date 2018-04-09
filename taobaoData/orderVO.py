@@ -5,7 +5,6 @@
 class orderVO(object):
     babyName = ""#产品名称
     sellId = []#交易ID
-    babyRemark = ""#卖家备注
     babyWeixinMoney = 0#微信销售金额
     babyWeixinNum = 0#微信销售数量
     weixinRemarkMoney =0#微信标记数量
@@ -20,9 +19,19 @@ class orderVO(object):
     unknowRemarkMoney =0#没有识别标记的总金额
     unknowRemarkNum =0#没有识别标记的总数量
 
-    def __init__(self,name,Remark,Id):
+    def __init__(self,name):
         self.babyName = name
-        self.addOneData(Remark,Id)
+
 
     def addOneData(self,sellRemark,sellId):
         self.sellId.append(sellId)
+    
+    def weixin(self,money,num,rmoney,rnum):
+        pass
+    def noin(self,money,num):
+        pass
+    def web(self,money,num):
+        pass
+    def wrongr(self,money,num):
+        pass
+    

@@ -13,25 +13,25 @@ reZhengchang = re.compile(r'[A-Z]{2,4}-{1}([A-Z]{1,5}\*?\d{0,2}\+?)+')
 
 #这个方法是读取csv数据并且对数据进行分析
 def readcsv():
-    global csvFileList
+    global csvFileList , orderVOList
     for filelink in csvFileList:
         with open(filelink) as f:
             f_csv = csv.reader(f)
             headers = next(f_csv)
             for row in f_csv:
                 if (row[10].find('已')>-1):
-                    doTitle(row[19],row[19],row[19])
+                    doTitle(row[19])
+                    for ov in orderVOList:
+                        if (ov.name == row[19]):
+                            analysis(ov,row[23],float(row[7]))
 
-def doTitle(title,remark,sellid):
+def doTitle(title):
     global orderVOList
-    if(len(orderVOList)!=0):
-        for ov in orderVOList:
-            if(ov.babyName == title):
-                pass
-            else:
-                orderVOList.append(orderVO(title , remark , sellid))
+    for ov in orderVOList:
+        if(ov.babyName == title):
+            return
     else:
-        orderVOList.append(orderVO(title , remark , sellid))
+        orderVOList.append(orderVO(title))
 #获取该文件夹下边的所有csv文件名称放入list
 def getfile():
     global csvAddress,csvFileList
@@ -42,11 +42,13 @@ def getfile():
     #G-GWZ-MJ*1(100+5)-ST   这些是标记范例
     #GWZ-PJW*1+JCF*2-BS
     #V-GWZ-PJW*1-YD
-def analysis(shellReadmark):
+def analysis(ov,shellReadmark,money):
     if(shellReadmark.find('null')!=-1):#判断是不是没有填写备注
-        print('这是空值')
+        ov.unknowRemarkMoney+=money
+        ov.unknowRemarkNum+=1
     elif(reWeixin.match(shellReadmark)):#判断是不是微信刷单  
-        print('微信刷单')
+        ov.babyWeixinMoney+=money
+        ov.babyWeixinNum+=1
     elif(reWangzhan.match(shellReadmark)):#判断是不是网站刷单  
         print('网站刷单')
     elif(reZhengchang.match(shellReadmark)):#判断是真实刷单 
@@ -58,5 +60,4 @@ if __name__ == '__main__':
     getfile()
     readcsv()
     #analysis('GWZ-MJ*1+LJD*2')
-
 
