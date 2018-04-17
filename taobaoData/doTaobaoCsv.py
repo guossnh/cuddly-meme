@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import os,re,csv,sys
 from orderVO import orderVO
+from decimal import Decimal
 
 csvAddress = "c:\\csvCache\\taobaoWeb\\"#web导出表格地址
 csvFileList = []#这是存放文件路径的list
@@ -57,6 +58,11 @@ def analysis(ov,shellReadmark,money,sellID):
 
 def output():#输出文本文档
     global optputFile ,orderVOList
+    allsellMoney = 0.0
+    allWebMoney = 0.0
+    allWeixinMoney = 0.0
+    allNoRemark = 0.0
+    allWrongMoney = 0.0
     with open(optputFile,"w") as f:
         for ov in orderVOList:
             f.write(
@@ -71,6 +77,19 @@ def output():#输出文本文档
             备注错误单号:"""+str(ov.worongSellId)+"""
             """
             )
+            allsellMoney = Decimal(str(allsellMoney)) + Decimal(str(ov.babysellMoney))
+            allWebMoney = Decimal(str(allWebMoney)) + Decimal(str(ov.babyWebMoney))
+            allWeixinMoney = Decimal(str(allWeixinMoney)) + Decimal(str(ov.babyWeixinMoney))
+            allNoRemark = Decimal(str(allNoRemark)) + Decimal(str(ov.noRemarkMoney))
+            allWrongMoney = Decimal(str(allWrongMoney)) + Decimal(str(ov.unknowRemarkMoney))
+        f.write("""
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~华丽的总结线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
+            总共真实销售:"""+str(allsellMoney)+"""
+            总共网站放单:"""+str(allWebMoney)+"""
+            总共微信刷单:"""+str(allWeixinMoney)+"""
+            总共标记错误:"""+str(allWrongMoney)+"""
+            总共没有标记:"""+str(allNoRemark)+"""
+        """)
 
 if __name__ == '__main__':
     getfile()
