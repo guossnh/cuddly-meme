@@ -66,30 +66,30 @@ def output():#输出文本文档
     with open(optputFile,"w") as f:
         for ov in orderVOList:
             f.write(
-            """
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~华丽的分割线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
-            产品标题:"""+str(ov.babyName)+"""\n
-            真实销量:"""+str(ov.babysellMoney)+"""总数量:"""+str(ov.babysellNum)+"""\n
-            网站刷单:"""+str(ov.babyWebMoney)+"""总数量:"""+str(ov.babyWebNum)+"""\n
-            微信刷单:"""+str(ov.babyWeixinMoney)+"""总数量:"""+str(ov.babyWeixinNum)+"""微信备注总额:"""+str(ov.weixinRemarkMoney)+"""佣金总额:"""+str(ov.weixinRemarkMoney2)+"""\n
-            没有备注:"""+str(ov.noRemarkMoney)+"""总数量:"""+str(ov.noRemarkNum)+"""\n
-            备注不对:"""+str(ov.unknowRemarkMoney)+"""总数量:"""+str(ov.unknowRemarkNum)+"""\n
-            备注错误单号:"""+str(ov.worongSellId)+"""
-            """
+"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~华丽的分割线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
+产品标题:"""+str(ov.babyName)+"""\n
+真实销量:"""+str(ov.babysellMoney)+"""总数量:"""+str(ov.babysellNum)+"""\n
+网站刷单:"""+str(ov.babyWebMoney)+"""总数量:"""+str(ov.babyWebNum)+"""\n
+微信刷单:"""+str(ov.babyWeixinMoney)+"""总数量:"""+str(ov.babyWeixinNum)+"""微信备注总额:"""+str            (ov.weixinRemarkMoney)+"""佣金总额:"""+str(ov.weixinRemarkMoney2)+"""\n
+没有备注:"""+str(ov.noRemarkMoney)+"""总数量:"""+str(ov.noRemarkNum)+"""\n
+备注不对:"""+str(ov.unknowRemarkMoney)+"""总数量:"""+str(ov.unknowRemarkNum)+"""\n
+备注错误单号:"""+str(ov.worongSellId)+"""
+"""
             )
             allsellMoney = Decimal(str(allsellMoney)) + Decimal(str(ov.babysellMoney))
             allWebMoney = Decimal(str(allWebMoney)) + Decimal(str(ov.babyWebMoney))
             allWeixinMoney = Decimal(str(allWeixinMoney)) + Decimal(str(ov.babyWeixinMoney))
             allNoRemark = Decimal(str(allNoRemark)) + Decimal(str(ov.noRemarkMoney))
             allWrongMoney = Decimal(str(allWrongMoney)) + Decimal(str(ov.unknowRemarkMoney))
-        f.write("""
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~华丽的总结线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
-            总共真实销售:"""+str(allsellMoney)+"""
-            总共网站放单:"""+str(allWebMoney)+"""
-            总共微信刷单:"""+str(allWeixinMoney)+"""
-            总共标记错误:"""+str(allWrongMoney)+"""
-            总共没有标记:"""+str(allNoRemark)+"""
-        """)
+            f.write("""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~华丽的总结线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
+总共真实销售:"""+str(allsellMoney)+"""
+总共网站放单:"""+str(allWebMoney)+"""
+总共微信刷单:"""+str(allWeixinMoney)+"""
+总共标记错误:"""+str(allWrongMoney)+"""
+总共没有标记:"""+str(allNoRemark)+"""
+            """)
 
 if __name__ == '__main__':
     getfile()
