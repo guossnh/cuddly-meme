@@ -48,7 +48,7 @@ def analysis(ov,shellReadmark,money,sellID):
     elif(reWeixin.match(shellReadmark)):#判断是不是微信刷单  
         weixinre = shellReadmark.split('(')[1].split(')')[0].split('+')
         ov.weixin(money,weixinre[0],weixinre[1])
-    elif(reWangzhan.match(shellReadmark)):#判断是不是网站刷单  
+    elif(reWangzhan.match(shellReadmark)):#判断是不是网站刷单
         ov.web(money)
     elif(reZhengchang.match(shellReadmark)):#判断是真实单子
         ov.trueSell(money)
@@ -98,3 +98,7 @@ if __name__ == '__main__':
 
 
 
+
+#这个类主要用于连接数据库,信息要放在数据库,为往后做数据分析提供方便
+class linkToSqllite():
+    pass
