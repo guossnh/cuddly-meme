@@ -12,7 +12,7 @@
 
 
 //获取需要的变量
-var babyNum,babyMoney,babyTitle,babyClass,babyReturnMoney;//babyClass 判断1是脚气2是皮肤用的产品
+var babyNum,babyMoney,babyTitle,babyClass,babyReturnMoney,babyRemark;//babyClass 判断1是脚气2是皮肤用的产品
 //创建选择礼品礼品
 
 //这是一个新的onCreat办法只创建2个礼品的按钮会方便点
