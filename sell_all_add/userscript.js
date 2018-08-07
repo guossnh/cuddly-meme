@@ -7,7 +7,6 @@
 // @include    https://trade.taobao.com/trade/itemlist/*
 // @require  http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js
 // ==/UserScript==
-//e  biao jiyixia wocao
 //这是页面列表元素
 var listdate = "";
 list_date = [];

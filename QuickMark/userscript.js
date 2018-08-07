@@ -18,9 +18,9 @@ var babyNum,babyMoney,babyTitle,babyClass,babyReturnMoney,babyRemark;//babyClass
 //这是一个新的onCreat办法只创建2个礼品的按钮会方便点
 function creatSelect2(){
     var libtn = document.createElement("ul");
-    var maojinbtn = document.createElement("a");
-    maojinbtn.id="maojin";maojinbtn.innerHTML = "毛巾";maojinbtn.setAttribute("class","btn");
-    libtn.appendChild(maojinbtn);
+    //var maojinbtn = document.createElement("a");
+    //maojinbtn.id="maojin";maojinbtn.innerHTML = "毛巾";maojinbtn.setAttribute("class","btn");
+    //libtn.appendChild(maojinbtn);
     var chouzhibtn = document.createElement("a");
     chouzhibtn.id="chouzhi";chouzhibtn.innerHTML = "抽纸";chouzhibtn.setAttribute("class","btn");
     libtn.appendChild(chouzhibtn);
@@ -34,7 +34,7 @@ function getRadioCheckedValue(tagNameAttr){
     var radio_tag = document.getElementsByName(tagNameAttr);
     for(var i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
-            var checkvalue = radio_tag[i].value;            
+            var checkvalue = radio_tag[i].value;
             return checkvalue;
         }
     }
@@ -43,7 +43,7 @@ function getRadioCheckedValue(tagNameAttr){
 $(function(){
     creatSelect2();
     //下边是更改提交按钮的程序
-    document.getElementsByClassName("btn")[2].onclick=function(){document.getElementById("form1").submit();};
+    document.getElementsByClassName("btn")[1].onclick=function(){document.getElementById("form1").submit();};
     //下边是获取这些变量;
     babyNum = Number(document.getElementsByClassName("num")[1].innerText);
     babyMoney = document.getElementsByClassName("J_OrderPrice")[0].firstChild.nodeValue.split("￥")[1];
@@ -64,6 +64,9 @@ $(function(){
     else if(babyTitle.indexOf("皮肤瘙痒止痒")>=0||babyTitle.indexOf("阴囊湿疹")>=0||babyTitle.indexOf("处男性女")>=0){
         //判断是不是皮肤产品
         babyClass = 2;
+    }else if(babyTitle.indexOf("颈椎富贵包消")>=0||babyTitle.indexOf("疏通颈部肩颈坐骨")>=0||babyTitle.indexOf("坐骨神经疼 ")>=0){
+        //判断是不是皮肤产品
+        babyClass = 3;
     }
     if(babyRemark.indexOf("GWZ")==-1){
         if(babyClass==1){
@@ -71,15 +74,28 @@ $(function(){
             document.getElementById("memo").innerHTML="GWZ-PJW*"+babyNum+"+JCF*"+babyNum*2+"";
         }else if(babyClass==2){
             //判断是不是脚臭的产品
+            if(babyNum==2){
+                babyNum = 3;
+            }else if(babyNum==3) {
+                babyNum = 5;
+            }
             document.getElementById("memo").innerHTML="GWZ-CB*"+babyNum+"";
+        }else if(babyClass==3){
+            //判断是不是脚臭的产品
+            if(babyNum==2){
+                babyNum = 3;
+            }else if(babyNum==3) {
+                babyNum = 5;
+            }
+            document.getElementById("memo").innerHTML="GWZ-LLT*"+babyNum+"";
         }
     }
         //当毛巾被点击的时候
-    document.getElementById("maojin").onclick=function(){
-        document.getElementById("flag3").checked = true;//选择绿色的旗子
-        document.getElementById("memo").innerHTML="G-GWZ-MJ*1("+Number(babyMoney)+"+"+babyReturnMoney+")";
-        document.getElementById("form1").submit();
-    };
+    //document.getElementById("maojin").onclick=function(){
+    //    document.getElementById("flag3").checked = true;//选择绿色的旗子
+    //    document.getElementById("memo").innerHTML="G-GWZ-MJ*1("+Number(babyMoney)+"+"+babyReturnMoney+")";
+    //    document.getElementById("form1").submit();
+    //};
     //当抽纸被点击的时候
     document.getElementById("chouzhi").onclick=function(){
         document.getElementById("flag3").checked = true;//选择绿色的旗子
@@ -89,7 +105,7 @@ $(function(){
 });
 //当点击紫色旗子的时候
 document.getElementById("flag5").onclick=function(){
-    
+
     if(babyClass==1){
         //判断是不是脚臭的产品
         document.getElementById("memo").innerHTML="V-GWZ-PJW*"+babyNum+"";
