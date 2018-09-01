@@ -61,7 +61,7 @@ $(function(){
         //判断是不是脚臭的产品
         babyClass = 1;
     }
-    else if(babyTitle.indexOf("皮肤瘙痒止痒")>=0||babyTitle.indexOf("阴囊湿疹")>=0||babyTitle.indexOf("处男性女")>=0){
+    else if(babyTitle.indexOf("外阴瘙痒")>=0||babyTitle.indexOf("阴囊潮湿")>=0||babyTitle.indexOf("珍珠疹 ")>=0){
         //判断是不是皮肤产品
         babyClass = 2;
     }else if(babyTitle.indexOf("颈椎富贵包消")>=0||babyTitle.indexOf("疏通颈部肩颈坐骨")>=0||babyTitle.indexOf("坐骨神经疼 ")>=0){
