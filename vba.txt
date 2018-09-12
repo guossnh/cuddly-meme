@@ -1,0 +1,33 @@
+//工作中需要的vba写在这里
+
+Sub 删除()
+'
+' 删除固定列 宏
+'
+' 快捷键: Ctrl+d
+'
+'
+    Columns("AA:AV").Select
+    Selection.Delete Shift:=xlToLeft
+    Columns("J:Z").Select
+    Selection.Delete Shift:=xlToLeft
+    Columns("B:H").Select
+    Selection.Delete Shift:=xlToLeft
+End Sub
+
+
+Sub Enter_Values()
+    For Each xCell In Selection
+    xCell.Value = Value(Trim(Clean(xCell.Value)))
+    Next xCell
+End Sub
+
+'Sub select_box()
+'   MsgBox "当前选择的单元格区域为：" & Selection.Address
+'End Sub
+
+Sub select_box()
+For Each sc In Selection
+sc.Value = Application.WorksheetFunction.Clean(sc.Value)
+Next
+End Sub

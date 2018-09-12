@@ -67,8 +67,12 @@ $(function(){
     }else if(babyTitle.indexOf("颈椎富贵包消")>=0||babyTitle.indexOf("疏通颈部肩颈坐骨")>=0||babyTitle.indexOf("坐骨神经疼 ")>=0){
         //判断是不是皮肤产品
         babyClass = 3;
+    }else if(babyTitle.indexOf("盛草仙芳")>=0||babyTitle.indexOf("膏正品网肘")>=0||babyTitle.indexOf("大拇指手腕鼓包")>=0){
+        //判断是不是皮肤产品
+        babyClass = 4;
     }
     if(babyRemark.indexOf("GWZ")==-1){
+        var babyNum2=1;
         if(babyClass==1){
             //判断是不是脚臭的产品
             document.getElementById("memo").innerHTML="GWZ-PJW*"+babyNum+"+JCF*"+babyNum*2+"";
@@ -88,6 +92,14 @@ $(function(){
                 babyNum = 5;
             }
             document.getElementById("memo").innerHTML="GWZ-LLT*"+babyNum+"";
+        }else if(babyClass==4){
+            //判断是不是脚臭的产品
+            if(babyNum==2){
+                babyNum2 = 3;
+            }else if(babyNum==3) {
+                babyNum2 = 5;
+            }
+            document.getElementById("memo").innerHTML="GWZ-JQT*"+babyNum2+"-HW*"+babyNum+"";
         }
     }
         //当毛巾被点击的时候
