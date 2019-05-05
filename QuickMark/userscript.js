@@ -21,6 +21,9 @@ function creatSelect2(){
     //var maojinbtn = document.createElement("a");
     //maojinbtn.id="maojin";maojinbtn.innerHTML = "毛巾";maojinbtn.setAttribute("class","btn");
     //libtn.appendChild(maojinbtn);
+    var wangzhanbtn = document.createElement("a");
+    wangzhanbtn.id="wangzhan";wangzhanbtn.innerHTML = "网站";wangzhanbtn.setAttribute("class","btn");
+    libtn.appendChild(wangzhanbtn);
     var chouzhibtn = document.createElement("a");
     chouzhibtn.id="chouzhi";chouzhibtn.innerHTML = "抽纸";chouzhibtn.setAttribute("class","btn");
     libtn.appendChild(chouzhibtn);
@@ -114,6 +117,13 @@ $(function(){
         document.getElementById("memo").innerHTML="G-GWZ-CZ*1("+Number(babyMoney)+"+"+babyReturnMoney+")";
         document.getElementById("form1").submit();
     };
+    //当网站被点击的时候
+    document.getElementById("wangzhan").onclick=function(){
+        document.getElementById("flag5").checked = true;//选择紫色的旗子
+        document.getElementById("memo").innerHTML="V-GWZ-LLT*1";
+        document.getElementById("form1").submit();
+    };
+    //
 });
 //当点击紫色旗子的时候
 document.getElementById("flag5").onclick=function(){
