@@ -17,7 +17,7 @@ def readcsv():
     for filelink in csvFileList:
         with open(filelink) as f:
             f_csv = csv.reader(f)
-            headers = next(f_csv)
+            #headers = next(f_csv)
             for row in f_csv:
                 if (row[10].find('已')>-1):
                     doTitle(row[19])
