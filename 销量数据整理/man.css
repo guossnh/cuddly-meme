@@ -1,0 +1,59 @@
+/*这个是增加数据的按钮*/
+
+.myButton {
+    background-color: #44c767;
+    -moz-border-radius: 42px;
+    -webkit-border-radius: 42px;
+    border-radius: 42px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 8px 17px;
+    text-decoration: none;
+    text-shadow: -1px 1px 9px #2f6627;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 600;
+}
+
+.myButton:hover {
+    background-color: #5cbf2a;
+}
+
+.myButton:active {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+/*下边的是表格的样式*/
+
+table.gridtable {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}

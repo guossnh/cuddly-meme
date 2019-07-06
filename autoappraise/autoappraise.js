@@ -18,7 +18,7 @@ function summitbutton(){
     document.getElementsByClassName("good-rate")[0].click()
     setTimeout(summitbutton(), 2000);
 })();
-//这个再chrome里边没法关闭页面 想想通过按下x按键可以试试
+//这个再chrome里边没法关闭页面 想想通过按下x按键可以
 
 
 

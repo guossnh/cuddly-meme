@@ -1,0 +1,492 @@
+<html>
+
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.0.0/weui.min.css">
+    <link rel="stylesheet" href="https://weui.io/example.css">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+    <link rel="stylesheet" href="man.css">
+</head>
+
+<body ontouchstart>
+    <a href="https://jinshuju.net/f/eqbAZf" class="myButton">+</a>
+    <div class="page navbar js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-navbar">
+                    <div class="weui-navbar__item weui-bar__item_on" id="personData">
+                        个人
+                    </div>
+                    <div class="weui-navbar__item" id="AllData">
+                        整体
+                    </div>
+                </div>
+                <div class="weui-tab__panel">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var selldata = {
+            "total": 8,
+            "count": 8,
+            "data": [{
+                "serial_number": 1,
+                "field_1": "2019-07-05",
+                "field_2": "滑膜贴",
+                "field_3": "郭文卓",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 53,
+                        "总金额": 986,
+                        "访客": 990
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 4,
+                        "总金额": 500,
+                        "访客": 6605
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 300,
+                        "总金额": 600,
+                        "访客": 562651
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 76,
+                        "询单转化率": 6546,
+                        "自然转化率": 42524
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 800,
+                        "投产比": 900
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-02T06:21:50.053Z",
+                "updated_at": "2019-07-05T02:25:29.589Z"
+            }, {
+                "serial_number": 2,
+                "field_1": "2019-07-05",
+                "field_2": "老虎贴",
+                "field_3": "张三",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 16416,
+                        "总金额": 3515,
+                        "访客": 53256
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 546,
+                        "访客": 4563
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 456,
+                        "访客": 56456
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 55,
+                        "询单转化率": 25,
+                        "自然转化率": 245
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 4532,
+                        "投产比": 56356
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:28:31.978Z",
+                "updated_at": "2019-07-05T02:25:22.252Z"
+            }, {
+                "serial_number": 3,
+                "field_1": "2019-07-05",
+                "field_2": "枕头",
+                "field_3": "李四",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 4563,
+                        "总金额": 563,
+                        "访客": 3456
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 4,
+                        "总金额": 56,
+                        "访客": 345
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 34563,
+                        "总金额": 43456,
+                        "访客": 45
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 4563,
+                        "询单转化率": 4563,
+                        "自然转化率": 45634
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 0,
+                        "投产比": 0
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:28:57.184Z",
+                "updated_at": "2019-07-05T02:25:15.286Z"
+            }, {
+                "serial_number": 4,
+                "field_1": "2019-07-05",
+                "field_2": "草本肤即刻",
+                "field_3": "王麻子",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 3646,
+                        "总金额": 563,
+                        "访客": 4563
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 4563,
+                        "总金额": 4563,
+                        "访客": 4563
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 4563,
+                        "访客": 63
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 56,
+                        "询单转化率": 56,
+                        "自然转化率": 5
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 63563,
+                        "投产比": 563
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:29:24.126Z",
+                "updated_at": "2019-07-05T02:25:06.423Z"
+            }, {
+                "serial_number": 5,
+                "field_1": "2019-07-05",
+                "field_2": "路路通",
+                "field_3": "王虎",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 5345,
+                        "总金额": 3563,
+                        "访客": 63
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 4563,
+                        "总金额": 40.0053,
+                        "访客": 563
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 4563,
+                        "总金额": 4563,
+                        "访客": 563
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 536,
+                        "询单转化率": 363,
+                        "自然转化率": 36
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 6356,
+                        "投产比": 3563
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:30:02.283Z",
+                "updated_at": "2019-07-05T02:25:00.348Z"
+            }, {
+                "serial_number": 6,
+                "field_1": "2019-07-05",
+                "field_2": "头骨草",
+                "field_3": "特朗普",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 123,
+                        "总金额": 32,
+                        "访客": 6356
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 56,
+                        "总金额": 65,
+                        "访客": 56
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 868,
+                        "总金额": 56,
+                        "访客": 56
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 65,
+                        "询单转化率": 656,
+                        "自然转化率": 56
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 56,
+                        "投产比": 56
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T04:38:58.836Z",
+                "updated_at": "2019-07-05T02:24:52.735Z"
+            }, {
+                "serial_number": 7,
+                "field_1": "2019-07-04",
+                "field_2": "滑膜贴",
+                "field_3": "郭文卓",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 123,
+                        "总金额": 232,
+                        "访客": 23
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 5675,
+                        "总金额": 656,
+                        "访客": 534
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 56,
+                        "总金额": 789,
+                        "访客": 345
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 344,
+                        "询单转化率": 56,
+                        "自然转化率": 67
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 234,
+                        "投产比": 234
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:28:44.202Z",
+                "updated_at": "2019-07-05T02:28:44.278Z"
+            }, {
+                "serial_number": 8,
+                "field_1": "2019-07-04",
+                "field_2": "老虎贴",
+                "field_3": "张三",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 654,
+                        "访客": 46
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 45325,
+                        "总金额": 46,
+                        "访客": 6
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 63,
+                        "总金额": 463,
+                        "访客": 43
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 463,
+                        "询单转化率": 463,
+                        "自然转化率": 43
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 43,
+                        "投产比": 463
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:29:40.491Z",
+                "updated_at": "2019-07-05T02:29:40.562Z"
+            }, {
+                "serial_number": 8,
+                "field_1": "2019-07-04",
+                "field_2": "老虎贴",
+                "field_3": "张三",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 654,
+                        "访客": 46
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 45325,
+                        "总金额": 46,
+                        "访客": 6
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 63,
+                        "总金额": 463,
+                        "访客": 43
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 463,
+                        "询单转化率": 463,
+                        "自然转化率": 43
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 43,
+                        "投产比": 463
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:29:40.491Z",
+                "updated_at": "2019-07-05T02:29:40.562Z"
+            }, {
+                "serial_number": 8,
+                "field_1": "2019-07-04",
+                "field_2": "老虎贴",
+                "field_3": "张三",
+                "field_4": [{
+                    "statement": "自然",
+                    "dimensions": {
+                        "单数": 456,
+                        "总金额": 654,
+                        "访客": 46
+                    }
+                }, {
+                    "statement": "干预",
+                    "dimensions": {
+                        "单数": 45325,
+                        "总金额": 46,
+                        "访客": 6
+                    }
+                }, {
+                    "statement": "推广",
+                    "dimensions": {
+                        "单数": 63,
+                        "总金额": 463,
+                        "访客": 43
+                    }
+                }],
+                "field_5": [{
+                    "statement": "转化",
+                    "dimensions": {
+                        "总转化率": 463,
+                        "询单转化率": 463,
+                        "自然转化率": 43
+                    }
+                }],
+                "field_6": [{
+                    "statement": "推广",
+                    "dimensions": {
+                        "消耗费用": 43,
+                        "投产比": 463
+                    }
+                }],
+                "creator_name": "Tlk",
+                "created_at": "2019-07-05T02:29:40.491Z",
+                "updated_at": "2019-07-05T02:29:40.562Z"
+            }],
+            "next": null
+        }
+    </script>
+    <script type="text/javascript" src="man.js"></script>
+</body>
+
+</html>
