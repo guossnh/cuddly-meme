@@ -20,15 +20,14 @@ var today = new Date();
 today.setHours(8)
 var yestday = new Date(new Date().getTime() - (1000 * 60 * 60 * 24))
 var beforeYestay = new Date(new Date().getTime() - (1000 * 60 * 60 * 48))
-//下边是整合昨天和前天的数据
+    //下边是整合昨天和前天的数据
 var yestdayData = [];
 var beforeYestdayData = [];
 //筛选所有数据整合昨天和前天的数据
 for (i = 0; i < selldata.data.length; i++) {
     if (dateSame(yestday, new Date(selldata.data[i].field_1))) {
         yestdayData.push(selldata.data[i])
-    }
-    else if (dateSame(beforeYestay, new Date(selldata.data[i].field_1))) {
+    } else if (dateSame(beforeYestay, new Date(selldata.data[i].field_1))) {
         beforeYestdayData.push(selldata.data[i])
     }
 }
@@ -38,13 +37,13 @@ function makeYestDayList() {
         $("#selectNameList").append("<div onclick=makeDataToPage(" + yestdayData[i].serial_number + ")  class='weui-actionsheet__cell'>" + yestdayData[i].field_3 + "的" + yestdayData[i].field_2 + "</div>")
     }
 }
-$(function () {
+$(function() {
     //选项卡监听
-    $('.weui-navbar__item').on('click', function () {
+    $('.weui-navbar__item').on('click', function() {
         $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
     });
     //当点击个人选项
-    $('#personData').on('click', function () {
+    $('#personData').on('click', function() {
 
         $(".weui-tab__panel").empty();
         $(".weui-tab__panel").append('<div class="weui-skin_android" id="androidActionsheet" style="display: none;"><div class="weui-mask"></div><div class="weui-actionsheet"><div id="selectNameList" class="weui-actionsheet__menu"></div></div></div>');
@@ -56,12 +55,12 @@ $(function () {
         var $androidActionSheet = $('#androidActionsheet');
         var $androidMask = $androidActionSheet.find('.weui-mask');
         $androidActionSheet.fadeIn(200);
-        $androidMask.on('click', function () {
+        $androidMask.on('click', function() {
             $androidActionSheet.fadeOut(200);
         });
     });
     //当点击整体选项
-    $('#AllData').on('click', function () {
+    $('#AllData').on('click', function() {
         $(".weui-tab__panel").empty();
         $(".weui-tab__panel").append('<div class="page__hd"><h1 class="page__title">waiting</h1><p class="page__desc">ing</p></div>');
     });
@@ -87,6 +86,7 @@ function makeDataToPage(id) {
     $("#DataTitle").empty()
     $("#DataTitle").append("<h1 class='page__title'>" + YestoneSellData.field_3 + "的" + YestoneSellData.field_2 + "</h1><p class='page__desc'>数据日期" + YestoneSellData.field_1 + "</p>")
     if (beforeYestOneSellData == null) { $("#DataTitle").append(" <p class='page__desc'>系统没有查询到前天的数据无法进行匹对</p>") }
+
     function makeChangeData(yd, byd) {
         if (yd - byd > 0) {
             //是增加的话
@@ -103,22 +103,22 @@ function makeDataToPage(id) {
     }
     //设置内容数据
     $("#DataContent").empty()
-    //生成标题行
+        //生成标题行
     $("#DataTitle").append('<table class="gridtable" id= "contentTable"><tr><th>类别</th><th>总金额</th><th>单数</th><th>访客</th></tr></table>')
     if (beforeYestOneSellData == null) {
         //生成自然数据行
         $("#contentTable").append('<tr><td>自然</th><td>' + YestoneSellData.field_4[0].dimensions.总金额 + '</th><td>' + YestoneSellData.field_4[0].dimensions.单数 + '</th><td>' + YestoneSellData.field_4[0].dimensions.访客 + '</th></tr>')
-        //生成干预数据行
+            //生成干预数据行
         $("#contentTable").append('<tr><td>干预</th><td>' + YestoneSellData.field_4[1].dimensions.总金额 + '</th><td>' + YestoneSellData.field_4[1].dimensions.单数 + '</th><td>' + YestoneSellData.field_4[1].dimensions.访客 + '</th></tr>')
-        //生成推广数据
+            //生成推广数据
         $("#contentTable").append('<tr><td>推广</th><td>' + YestoneSellData.field_4[2].dimensions.总金额 + '</th><td>' + YestoneSellData.field_4[2].dimensions.单数 + '</th><td>' + YestoneSellData.field_4[2].dimensions.访客 + '</th></tr>')
 
     } else {
         //生成自然数据行
         $("#contentTable").append('<tr><td>自然</th><td>' + makeChangeData(YestoneSellData.field_4[0].dimensions.总金额, beforeYestOneSellData.field_4[0].dimensions.总金额) + '</th><td>' + makeChangeData(YestoneSellData.field_4[0].dimensions.单数, beforeYestOneSellData.field_4[0].dimensions.单数) + '</th><td>' + makeChangeData(YestoneSellData.field_4[0].dimensions.访客, beforeYestOneSellData.field_4[0].dimensions.访客) + '</th></tr>')
-        //生成干预数据行
+            //生成干预数据行
         $("#contentTable").append('<tr><td>干预</th><td>' + makeChangeData(YestoneSellData.field_4[1].dimensions.总金额, beforeYestOneSellData.field_4[1].dimensions.总金额) + '</th><td>' + makeChangeData(YestoneSellData.field_4[1].dimensions.单数, beforeYestOneSellData.field_4[1].dimensions.单数) + '</th><td>' + makeChangeData(YestoneSellData.field_4[1].dimensions.访客, beforeYestOneSellData.field_4[1].dimensions.访客) + '</th></tr>')
-        //生成推广数据
+            //生成推广数据
         $("#contentTable").append('<tr><td>推广</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.总金额, beforeYestOneSellData.field_4[2].dimensions.总金额) + '</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.单数, beforeYestOneSellData.field_4[2].dimensions.单数) + '</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.访客, beforeYestOneSellData.field_4[2].dimensions.访客) + '</th></tr>')
     }
     //生成转化表
