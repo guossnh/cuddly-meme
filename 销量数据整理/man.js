@@ -31,10 +31,41 @@ for (i = 0; i < selldata.data.length; i++) {
         beforeYestdayData.push(selldata.data[i])
     }
 }
-//这是生成选择列表
-function makeYestDayList() {
-    for (i = 0; i < yestdayData.length; i++) {
-        $("#selectNameList").append("<div onclick=makeDataToPage(" + yestdayData[i].serial_number + ")  class='weui-actionsheet__cell'>" + yestdayData[i].field_3 + "的" + yestdayData[i].field_2 + "</div>")
+//制作生成选择列表
+var yestdayDatalist = [];
+for (i = 0; i < yestdayData.length; i++) {
+    $("#selectNameList").append("<div onclick=makeDataToPage(" + yestdayData[i].serial_number + ")  class='weui-actionsheet__cell'>" + yestdayData[i].field_3 + "的" + yestdayData[i].field_2 + "</div>");
+    var oneyestdayData={}
+    oneyestdayData["label"] = "" + yestdayData[i].field_3 + "的" + yestdayData[i].field_2 + "";
+    oneyestdayData["value"] = "" + yestdayData[i].serial_number + "";
+    yestdayDatalist.push(oneyestdayData)
+    }
+
+//生成单列选择器
+$('#personData').on('click', function () {
+    weui.picker(yestdayDatalist, {
+        onChange: function (result) {
+        },
+        onConfirm: function (result) {
+            makeDataToPage(result)
+        }
+    });
+    
+});
+function getTureAllSellMoney(){
+    var cacheYsdData = 0,cacheBeysdData =0;
+    for (i = 0; i < yestdayData.length; i++){
+        cacheYsdData = cacheYsdData + yestdayData[i].field_4[0].dimensions.总金额;
+    }
+    for (i = 0; i < beforeYestdayData.length; i++){
+        cacheBeysdData = cacheBeysdData + beforeYestdayData[i].field_4[0].dimensions.总金额;
+    }
+    if(cacheYsdData>cacheBeysdData){
+        return ""+cacheYsdData+"元<a style='color:green;font-size: 7px;'>增加了"+(cacheYsdData-cacheBeysdData).toFixed(0)+"元</a>" 
+    }else if(cacheYsdData<cacheBeysdData){
+        return ""+cacheYsdData+"元<a style='color:red;font-size: 7px;'>减少了"+(cacheBeysdData-cacheYsdData).toFixed(0)+"元</a>" 
+    }else{
+        return ""+cacheYsdData+"元<a>持平</a>" 
     }
 }
 $(function() {
@@ -42,15 +73,16 @@ $(function() {
     $('.weui-navbar__item').on('click', function() {
         $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
     });
+    //下边的选卡监听
+    $('.weui-tabbar__item').on('click', function () {
+        $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+    });
     //当点击个人选项
     $('#personData').on('click', function() {
-
         $(".weui-tab__panel").empty();
-        $(".weui-tab__panel").append('<div class="weui-skin_android" id="androidActionsheet" style="display: none;"><div class="weui-mask"></div><div class="weui-actionsheet"><div id="selectNameList" class="weui-actionsheet__menu"></div></div></div>');
+        $(".weui-tab__panel").append('<div class="weui-skin_android" id="androidActionsheet" style="display: none;"><div class="weui-actionsheet"><div id="selectNameList" class="weui-actionsheet__menu"></div></div></div>');
         $(".weui-tab__panel").append('<div class="page__hd" id="DataTitle"></div>');
         $(".weui-tab__panel").append('<div class="page__bd page__bd_spacing" id="DataContent"></div>');
-        //重新生成列表
-        makeYestDayList();
         //展示列表
         var $androidActionSheet = $('#androidActionsheet');
         var $androidMask = $androidActionSheet.find('.weui-mask');
@@ -62,10 +94,10 @@ $(function() {
     //当点击整体选项
     $('#AllData').on('click', function() {
         $(".weui-tab__panel").empty();
-        $(".weui-tab__panel").append('<div class="page__hd"><h1 class="page__title">waiting</h1><p class="page__desc">ing</p></div>');
+        $(".weui-tab__panel").append('<div class="page__hd"><h1 class="page__title">昨日销售总额：'+getTureAllSellMoney()+'</h1><p class="page__desc">数据为已经统计的数据之和</p></div>');
     });
 });
-//
+
 //getid之后整理数据发送到页面
 function makeDataToPage(id) {
     //根据id找到对象和昨天的对象
@@ -87,13 +119,13 @@ function makeDataToPage(id) {
     $("#DataTitle").append("<h1 class='page__title'>" + YestoneSellData.field_3 + "的" + YestoneSellData.field_2 + "</h1><p class='page__desc'>数据日期" + YestoneSellData.field_1 + "</p>")
     if (beforeYestOneSellData == null) { $("#DataTitle").append(" <p class='page__desc'>系统没有查询到前天的数据无法进行匹对</p>") }
 
-    function makeChangeData(yd, byd) {
+    function makeChangeData(yd, byd, sav = 0) {
         if (yd - byd > 0) {
             //是增加的话
-            return "" + yd + "<a style='color:green' >&nbsp;↑" + (yd - byd) + "</a>"
+            return "" + yd + "<a style='color:green' >&nbsp;↑" + (yd - byd).toFixed(sav) + "</a>"
         } else if (yd - byd < 0) {
             //是减少的话
-            return "" + yd + "<a style='color:red' >&nbsp;↓" + (byd - yd) + "</a>"
+            return "" + yd + "<a style='color:red' >&nbsp;↓" + (byd - yd).toFixed(sav) + "</a>"
         } else if (yd - byd == 0) {
             //是没变化的话
             return "" + yd + "-"
@@ -122,17 +154,17 @@ function makeDataToPage(id) {
         $("#contentTable").append('<tr><td>推广</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.总金额, beforeYestOneSellData.field_4[2].dimensions.总金额) + '</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.单数, beforeYestOneSellData.field_4[2].dimensions.单数) + '</th><td>' + makeChangeData(YestoneSellData.field_4[2].dimensions.访客, beforeYestOneSellData.field_4[2].dimensions.访客) + '</th></tr>')
     }
     //生成转化表
-    $("#DataTitle").append('<br><table class="gridtable" id = "zhuanhuaTable"><tr><th></th><th>总转化率</th><th>询单转化率</th><th>自然转化率</th></tr></table>')
-    if (beforeYestOneSellData == null) {
+        $("#DataTitle").append('<br><table class="gridtable" id = "zhuanhuaTable"><tr><th></th><th>总转化率</th><th>询单转化率</th><th>自然转化率</th></tr></table>')
+        if (beforeYestOneSellData == null) {
         $("#zhuanhuaTable").append('<tr><td>转化</td><td>' + YestoneSellData.field_5[0].dimensions.总转化率 + '</td><td>' + YestoneSellData.field_5[0].dimensions.询单转化率 + '</td><td>' + YestoneSellData.field_5[0].dimensions.自然转化率 + '</td></tr></table>')
-    } else {
+        } else {
         $("#zhuanhuaTable").append('<tr><td>转化</td><td>' + makeChangeData(YestoneSellData.field_5[0].dimensions.总转化率, beforeYestOneSellData.field_5[0].dimensions.总转化率) + '</td><td>' + makeChangeData(YestoneSellData.field_5[0].dimensions.询单转化率, beforeYestOneSellData.field_5[0].dimensions.询单转化率) + '</td><td>' + makeChangeData(YestoneSellData.field_5[0].dimensions.自然转化率, beforeYestOneSellData.field_5[0].dimensions.自然转化率) + '</td></tr></table>')
-    }
+        }
     //生成推广数据
     $("#DataTitle").append('<br><table class="gridtable" id = "tuiguangTable"><tr><th></th><th>费用</th><th>投产</th></tr></table>')
     if (beforeYestOneSellData == null) {
         $("#tuiguangTable").append('<tr><td>推广</td><td>' + YestoneSellData.field_6[0].dimensions.消耗费用 + '</td><td>' + YestoneSellData.field_6[0].dimensions.投产比 + '</td></tr></table>')
     } else {
-        $("#tuiguangTable").append('<tr><td>推广</td><td>' + makeChangeData(YestoneSellData.field_6[0].dimensions.消耗费用, beforeYestOneSellData.field_6[0].dimensions.消耗费用) + '</td><td>' + makeChangeData(YestoneSellData.field_6[0].dimensions.投产比, beforeYestOneSellData.field_6[0].dimensions.投产比) + '</td></tr></table>')
+        $("#tuiguangTable").append('<tr><td>推广</td><td>' + makeChangeData(YestoneSellData.field_6[0].dimensions.消耗费用, beforeYestOneSellData.field_6[0].dimensions.消耗费用,2) + '</td><td>' + makeChangeData(YestoneSellData.field_6[0].dimensions.投产比, beforeYestOneSellData.field_6[0].dimensions.投产比,2) + '</td></tr></table>')
     }
 }
